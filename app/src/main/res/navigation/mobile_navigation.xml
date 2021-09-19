@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.myvideos.ui.home.HomeFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_nav_signUp"
+            app:destination="@id/nav_signUp" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_myVideosList"
+            app:destination="@id/nav_myVideosList" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_signUp"
+        android:name="com.example.myvideos.ui.signUp.signUp"
+        android:label=" "
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_nav_signUp_to_nav_myVideosList"
+            app:destination="@id/nav_myVideosList" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_myVideosList"
+        android:name="com.example.myvideos.ui.MyVideosList.MyVideosList"
+        android:label=" "
+        tools:layout="@layout/fragment_my_videos_list" >
+        <action
+            android:id="@+id/action_nav_myVideosList_to_nav_playVideo2"
+            app:destination="@id/nav_playVideo" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_playVideo"
+        android:name="com.example.myvideos.ui.playVideo.playVideo"
+        android:label=" "
+        tools:layout="@layout/fragment_play_video">
+        <argument
+            android:name="videoId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_myFavoriteVideosList"
+        android:name="com.example.myvideos.ui.myFavoriteVideosList.MyFavoriteVideosList"
+        android:label=" "
+        tools:layout="@layout/fragment_my_favorite_videos_list" />
+
+</navigation>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.signUp.signUp">
+
+
+    <EditText
+        android:id="@+id/signUp_userName_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="67dp"
+        android:ems="10"
+        android:hint="USER NAME"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUp_headLine_tv" />
+
+    <EditText
+        android:id="@+id/signUp_password_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:ems="10"
+        android:hint="PASSWORD"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/signUp_userName_et"
+        app:layout_constraintStart_toStartOf="@+id/signUp_userName_et"
+        app:layout_constraintTop_toBottomOf="@+id/signUp_userName_et" />
+
+    <TextView
+        android:id="@+id/signUp_headLine_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="SIGN UP"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/signUp_signUp_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="SIGN UP"
+        app:layout_constraintEnd_toEndOf="@+id/signUp_password_et"
+        app:layout_constraintStart_toStartOf="@+id/signUp_password_et"
+        app:layout_constraintTop_toBottomOf="@+id/signUp_password_et" />
+
+    <TextView
+        android:id="@+id/signUp_login_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:text="Have already an account?"
+        app:layout_constraintEnd_toEndOf="@+id/signUp_signUp_btn"
+        app:layout_constraintStart_toStartOf="@+id/signUp_signUp_btn"
+        app:layout_constraintTop_toBottomOf="@+id/signUp_signUp_btn" />
+</androidx.constraintlayout.widget.ConstraintLayout>
