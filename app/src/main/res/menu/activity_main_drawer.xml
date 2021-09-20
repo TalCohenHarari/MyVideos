@@ -10,11 +10,11 @@
             android:title="My Videos List" />
         <item
             android:id="@+id/menu_myFavoriteVideosList"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_star"
             android:title="My Favorite Videos List" />
         <item
             android:id="@+id/menu_logOut"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="?attr/actionModeCloseDrawable"
             android:title="Sign Out" />
     </group>
 </menu>

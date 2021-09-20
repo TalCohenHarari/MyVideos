@@ -7,26 +7,63 @@
     tools:context=".ui.signUp.signUp">
 
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_videocam"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUp_login_tv" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#68757272"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/signUp_headLine_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#68757272"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUp_headLine_tv" />
+
     <EditText
         android:id="@+id/signUp_userName_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="67dp"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/white_shape_edit_text"
         android:ems="10"
         android:hint="USER NAME"
         android:inputType="textPersonName"
+        android:paddingStart="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signUp_headLine_tv" />
 
     <EditText
         android:id="@+id/signUp_password_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/white_shape_edit_text"
         android:ems="10"
         android:hint="PASSWORD"
         android:inputType="textPassword"
+        android:paddingStart="35dp"
         app:layout_constraintEnd_toEndOf="@+id/signUp_userName_et"
         app:layout_constraintStart_toStartOf="@+id/signUp_userName_et"
         app:layout_constraintTop_toBottomOf="@+id/signUp_userName_et" />
@@ -38,14 +75,14 @@
         android:layout_marginTop="96dp"
         android:text="SIGN UP"
         android:textSize="34sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/signUp_signUp_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="SIGN UP"
@@ -58,8 +95,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
-        android:text="Have already an account?"
+        android:text="Already have an account?"
         app:layout_constraintEnd_toEndOf="@+id/signUp_signUp_btn"
         app:layout_constraintStart_toStartOf="@+id/signUp_signUp_btn"
         app:layout_constraintTop_toBottomOf="@+id/signUp_signUp_btn" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/person_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/signUp_userName_et"
+        app:layout_constraintStart_toStartOf="@+id/signUp_userName_et"
+        app:layout_constraintTop_toTopOf="@+id/signUp_userName_et" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/security_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/signUp_password_et"
+        app:layout_constraintStart_toStartOf="@+id/signUp_password_et"
+        app:layout_constraintTop_toTopOf="@+id/signUp_password_et" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

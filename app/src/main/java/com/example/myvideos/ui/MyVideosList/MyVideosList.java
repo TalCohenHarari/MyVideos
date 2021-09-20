@@ -1,6 +1,7 @@
 package com.example.myvideos.ui.MyVideosList;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -40,8 +41,8 @@ public class MyVideosList extends Fragment {
     RecyclerView recyclerView;
     MyAdapter adapter;
     MyVideosViewModel myVideosViewModel;
-    public static String packageName;
     Dialog editDialog;
+    public static Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class MyVideosList extends Fragment {
 
     private void initialize() {
 
-        packageName = "com.example.myvideos";
+        context = getContext();
         editDialog = new Dialog(getContext());
 
         //List
@@ -105,7 +106,9 @@ public class MyVideosList extends Fragment {
             }
             @Override
             public void onDeleteClick(int position) {
-
+                Video v = myVideosViewModel.list.get(position);
+                Controller.instance.delete(Controller.getUser().getId(),v.getId());
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -121,6 +124,7 @@ public class MyVideosList extends Fragment {
                     toast = "Video unsaved in favorite list";
                 }
                 Controller.instance.update(v);
+                adapter.notifyDataSetChanged();
                 Toast.makeText(getActivity(), toast, Toast.LENGTH_LONG).show();
             }
 
@@ -187,10 +191,17 @@ public class MyVideosList extends Fragment {
 
         public void bind(Video video){
             id = video.getId();
-            name.setText(video.getVideoName() +" (" + video.getUserName() + ")");
-            String path = "android.resource://" + packageName + "/" + R.raw.videoplayback;
+            name.setText(video.getVideoName());
+            String path = video.getVideoPath();
             Uri uri = Uri.parse(path);
             videoView.setVideoURI(uri);
+
+            if(video.isFavorite()){
+                star.setImageResource( R.drawable.ic_star);
+            }
+            else{
+                star.setImageResource( R.drawable.ic_star_gary);
+            }
         }
     }
 

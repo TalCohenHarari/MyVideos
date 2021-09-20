@@ -32,14 +32,15 @@ public class playVideo extends Fragment {
 
         //ViewModel
         playVideoViewModel = new ViewModelProvider(this).get(PlayVideoViewModel.class);
+
         playVideoViewModel.getVideos().observe(getViewLifecycleOwner(), (data)->{
             if(data!=null) {
                 String videoId = playVideoArgs.fromBundle(getArguments()).getVideoId();
                 playVideoViewModel.getCurrentVideo(videoId);
-                String path = "android.resource://" + playVideoViewModel.video.getVideoPath() + "/" + R.raw.videoplayback;
+                String path = playVideoViewModel.video.getVideoPath();
                 Uri uri = Uri.parse(path);
                 videoView.setVideoURI(uri);
-                MediaController mediaController = new MediaController(MyApplication.context);
+                MediaController mediaController = new MediaController(getContext());
                 videoView.setMediaController(mediaController);
                 mediaController.setAnchorView(videoView);
                 videoView.start();

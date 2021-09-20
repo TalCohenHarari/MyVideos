@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/drawable/ic_baseline_videocam_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/drawable/person_icon.xml" value="0.3828125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/drawable/security_icon.xml" value="0.3828125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/drawable/white_shape_edit_text.xml" value="0.3828125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/layout/activity_main.xml" value="0.16793313069908813" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/layout/app_bar_main.xml" value="0.16793313069908813" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/layout/content_main.xml" value="0.16793313069908813" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/layout/edit_dialog.xml" value="0.16793313069908813" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/layout/favorite_videos_row.xml" value="0.16793313069908813" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/layout/fragment_home.xml" value="0.3453125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/layout/fragment_play_video.xml" value="0.3453125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/layout/fragment_sign_up.xml" value="0.3453125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/layout/nav_header_main.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/menu/activity_main_drawer.xml" value="0.2979591836734694" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/menu/main.xml" value="0.20277777777777778" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyVideos/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

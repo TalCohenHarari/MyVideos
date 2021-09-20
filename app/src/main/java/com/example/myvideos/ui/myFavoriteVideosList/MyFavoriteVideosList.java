@@ -33,7 +33,6 @@ public class MyFavoriteVideosList extends Fragment {
     RecyclerView recyclerView;
     MyAdapter adapter;
     MyFavoriteVideosViewModel myFavoriteVideosViewModel;
-    public static String packageName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,8 +44,6 @@ public class MyFavoriteVideosList extends Fragment {
     }
 
     private void initialize() {
-
-        packageName = "com.example.myvideos";
 
         //List
         recyclerView = root.findViewById(R.id.favoriteVideos_recyclerView);
@@ -68,8 +65,15 @@ public class MyFavoriteVideosList extends Fragment {
 
         adapter.setOnClickListener(new MyFavoriteVideosList.OnItemClickListener() {
             @Override
+            public void onClick(int position,String id) {
+                MyFavoriteVideosListDirections.ActionNavMyFavoriteVideosListToNavPlayVideo action= MyFavoriteVideosListDirections.actionNavMyFavoriteVideosListToNavPlayVideo(id);
+                Navigation.findNavController(root).navigate(action);
+            }
+            @Override
             public void onDeleteClick(int position) {
-
+                Video v = myFavoriteVideosViewModel.list.get(position);
+                Controller.instance.delete(Controller.getUser().getId(),v.getId());
+                adapter.notifyDataSetChanged();
             }
         });
     }
@@ -89,6 +93,14 @@ public class MyFavoriteVideosList extends Fragment {
             delete = itemView.findViewById(R.id.favoriteVideoListRowRow_delete_imgV);
             this.listener=listener;
 
+            itemView.setOnClickListener(v -> {
+                if(listener!=null){
+                    int position=getAdapterPosition();
+                    if(position!= RecyclerView.NO_POSITION)
+                        listener.onClick(position,id);
+                }
+            });
+
             delete.setOnClickListener(v -> {
                 if(listener!=null){
                     int position=getAdapterPosition();
@@ -100,14 +112,15 @@ public class MyFavoriteVideosList extends Fragment {
 
         public void bind(Video video){
             id = video.getId();
-            name.setText(video.getVideoName() +" (" + video.getUserName() + ")");
-            String path = "android.resource://" + packageName + "/" + R.raw.videoplayback;
+            name.setText(video.getVideoName());
+            String path = video.getVideoPath();
             Uri uri = Uri.parse(path);
             videoView.setVideoURI(uri);
         }
     }
 
     public interface OnItemClickListener{
+        void onClick(int position, String id);
         void onDeleteClick(int position);
     }
 

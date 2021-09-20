@@ -8,13 +8,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.myvideos.R;
 import com.example.myvideos.model.Controller;
 import com.example.myvideos.model.tables.User;
+import com.example.myvideos.model.tables.UserVideoCrossRef;
 import com.example.myvideos.model.tables.Video;
+import com.example.myvideos.ui.home.HomeViewModel;
 
 import java.util.UUID;
 
@@ -26,7 +30,7 @@ public class signUp extends Fragment {
     private EditText  passwordEt;
     private Button signUpBtn;
     private TextView existAccountTv;
-
+    private SignUpViewModel signUpViewModel;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -38,6 +42,9 @@ public class signUp extends Fragment {
     }
 
     private void Initialize() {
+        signUpViewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
+        signUpViewModel.getUsers().observe(getViewLifecycleOwner(),(data)->{ });
+
         userNameEt = root.findViewById(R.id.signUp_userName_et);
         passwordEt = root.findViewById(R.id.signUp_password_et);
         signUpBtn = root.findViewById(R.id.signUp_signUp_btn);
@@ -46,25 +53,35 @@ public class signUp extends Fragment {
 
     private void listeners() {
         signUpBtn.setOnClickListener(v->{
-            //TODO: check if there is this user name on system
-            String userId = UUID.randomUUID().toString();
-            User user = new User(userId,userNameEt.getText().toString(),passwordEt.getText().toString(),true);
-            Controller.instance.create(user);
+            if(!signUpViewModel.isUserExist(userNameEt.getText().toString(),passwordEt.getText().toString()) &&
+                    !userNameEt.getText().toString().isEmpty() &&
+                    !passwordEt.getText().toString().isEmpty())
+            {
+                    String userId = UUID.randomUUID().toString();
+                    User user = new User(userId, userNameEt.getText().toString(), passwordEt.getText().toString(), true);
+                    Controller.instance.create(user);
 
-            //(String id, String userName, String userOwnerId, boolean isDeleted,String videoName,boolean isFavorite)
-            for (int i = 1; i < 6; i++) {
-                Controller.instance.create(new Video(
-                        UUID.randomUUID().toString(),
-                        userNameEt.getText().toString(),
-                        userId,
-                        false,
-                        "Video Number "+i,
-                        false,
-                        "com.example.myvideos"
-                ));
-            }
-            Navigation.findNavController(root).navigate(R.id.nav_myVideosList);
+                    for (int i = 1; i < 10; i++) {
+                        Controller.instance.create(new UserVideoCrossRef(userId, i + ""));
+                    }
+                    Navigation.findNavController(root).navigate(R.id.nav_myVideosList);
+                }
+
         });
         existAccountTv.setOnClickListener(v->{ Navigation.findNavController(root).navigate(R.id.nav_home); });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if( ((AppCompatActivity)getActivity()).getSupportActionBar()!=null)
+            ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if( ((AppCompatActivity)getActivity()).getSupportActionBar()!=null)
+            ((AppCompatActivity)getActivity()).getSupportActionBar().show();
     }
 }

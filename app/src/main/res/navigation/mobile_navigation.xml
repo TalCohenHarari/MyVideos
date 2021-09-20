@@ -48,6 +48,10 @@
         android:id="@+id/nav_myFavoriteVideosList"
         android:name="com.example.myvideos.ui.myFavoriteVideosList.MyFavoriteVideosList"
         android:label=" "
-        tools:layout="@layout/fragment_my_favorite_videos_list" />
+        tools:layout="@layout/fragment_my_favorite_videos_list" >
+        <action
+            android:id="@+id/action_nav_myFavoriteVideosList_to_nav_playVideo"
+            app:destination="@id/nav_playVideo" />
+    </fragment>
 
 </navigation>

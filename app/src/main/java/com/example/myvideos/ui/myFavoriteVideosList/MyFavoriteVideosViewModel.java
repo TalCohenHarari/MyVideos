@@ -16,7 +16,7 @@ public class MyFavoriteVideosViewModel extends ViewModel {
 
     public MyFavoriteVideosViewModel() {
         list = new LinkedList<>();
-        videosList=Controller.instance.getAllUserFavoriteVideos(Controller.getUser().getId());
+        videosList = Controller.instance.getAllUserFavoriteVideos(Controller.getUser().getId());
     }
 
     public MutableLiveData<List<Video>> getVideos() { return videosList; }

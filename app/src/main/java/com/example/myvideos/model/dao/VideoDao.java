@@ -23,9 +23,4 @@ public interface VideoDao {
     @Delete
     void delete(Video video);
 
-    @Query("select * from Video where userOwnerId = :userId")
-    List<Video> getAllUserVideos(String userId);
-
-    @Query("select * from Video where userOwnerId = :userId and isFavorite= 1")
-    List<Video> getAllFavoriteUserVideos(String userId);
 }

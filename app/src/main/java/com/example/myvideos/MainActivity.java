@@ -1,24 +1,22 @@
 package com.example.myvideos;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Menu;
-
-import com.example.myvideos.model.Controller;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myvideos.databinding.ActivityMainBinding;
+import com.example.myvideos.model.Controller;
+import com.example.myvideos.model.tables.Video;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -51,6 +49,26 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         navigationView.setNavigationItemSelectedListener(this);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("prefs",MODE_PRIVATE);
+        boolean firstStart = sharedPreferences.getBoolean("firstStart",true);
+        if(firstStart)
+            insertVideoData();
+    }
+
+    private void insertVideoData() {
+        for (int i = 1; i < 11; i++) {
+            if((i%2)==0) {
+                Controller.instance.create(new Video(i + "", false, "Video " + i, false, "android.resource://" + "com.example.myvideos" + "/" + R.raw.videoplayback));
+            }
+            else{
+                Controller.instance.create(new Video(i + "", false, "Video " + i, false, "android.resource://" + "com.example.myvideos" + "/" + R.raw.toystory));
+            }
+        }
+        SharedPreferences sharedPreferences = getSharedPreferences("prefs",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("firstStart",false);
+        editor.apply();
     }
 
     @Override
